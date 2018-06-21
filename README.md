@@ -39,21 +39,6 @@ directory, which contains the code for the Amazon ECS sample app.
 
 #### 2. Create the CloudFormation stack
 
-Deploy | Region Name | Region | Launch Types
-:---: | ------------ | ------------- | -------------
-[🚀][us-east-1] | US East (N. Virginia) | us-east-1 | Fargate, EC2
-[🚀][us-east-2] | US East (Ohio) | us-east-2 | EC2
-[🚀][us-west-1] | US West (N. California) | us-west-1 | EC2
-[🚀][us-west-2] | US West (Oregon) | us-west-2 | EC2
-[🚀][eu-west-1] | EU (Ireland) | eu-west-1 | EC2
-[🚀][eu-west-2] | EU (London) | eu-west-2 | EC2
-[🚀][eu-central-1] | EU (Frankfurt) | eu-central-1 | EC2
-[🚀][ap-southeast-1] | Asia Pacific (Singapore) | ap-southeast-1 | EC2
-[🚀][ap-southeast-2] | Asia Pacific (Sydney) | ap-southeast-2 | EC2
-[🚀][ap-northeast-1] | Asia Pacific (Tokyo) | ap-northeast-1 | EC2
-[🚀][ap-northeast-2] | Asia Pacific (Seoul) | ap-northeast-2 | EC2
-[🚀][ca-central-1] | Canada (Central) | ca-central-1 | EC2
-
 This reference architecture can only be deployed to Regions which have all
 necessary services available. See the [Region
 Table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
@@ -66,6 +51,11 @@ The CloudFormation template requires the following parameters:
     Selecting EC2 will create an Auto Scaling group of t2.micro instances for
     your cluster. See the [documentation][launch-types] to learn more about
     launch types.
+
+- Network Configuration
+  - **VpcId**: VPC ID for pre-build VPC to deploy ALB and ECS cluster
+  - **ALBSubnets**: Public subnets for ALB.
+  - **ECSSubnets**: Private subnets for ECS cluster.
 
 - GitHub Configuration
   - **Repo**: The repo name of the sample service.
